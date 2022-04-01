@@ -6,7 +6,7 @@ const postController = require('../controllers/postController');
 
 router.get('/', (req, res) => res.send({ message: '/api'}));
 
-router.get('/posts', postController.posts_get);
+router.get('/posts', passport.authenticate('jwt', { session: false }), postController.posts_get);
 router.post('/posts', postController.posts_post);
 
 router.get('/posts/published', postController.published_get);

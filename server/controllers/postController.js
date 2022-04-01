@@ -1,9 +1,5 @@
 const Post = require('../models/Post');
 const Comment = require('../models/Comment');
-const User = require('../models/User');
-
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 
 // PROTECTED ROUTES
 exports.posts_get = (req, res, next) => {
@@ -69,16 +65,6 @@ exports.published_get = (req, res, next) => {
 }
 
 exports.unpublished_get = (req, res, next) => {
-  // const authHeader = req.headers["authorization"];
-  // const token = authHeader.split(' ')[1];
-  
-  // jwt.verify(token, "jsonwebtoken", (err, decode) => {
-  //   if (err) {
-  //     return next(err)
-  //   }
-  //   res.send({ message: decode })
-  // })
-
   if (!req.user) {
     res.status(403).send({
       message: 'not authorized.'
