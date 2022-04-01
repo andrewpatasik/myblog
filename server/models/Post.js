@@ -14,16 +14,16 @@ const PostSchema = new Schema({
     type: Date,
     default: new Date()
   },
+  postPublishedStatus: {
+    type: Boolean,
+    required: true
+  },
   postContentPreview: {
     type: String
   },
   postContent: {
     type: String
   },
-  postComment: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Comment'
-  }]
 })
 
 // PostSchema.virtual('url').get(function () {
