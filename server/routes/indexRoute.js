@@ -2,7 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 
-router.get('/', passport.authenticate('jwt', { session: false, failureRedirect: '/auth/login' }), (req, res) => {
+router.get('/', passport.authenticate('jwt', { session: false, failureRedirect: '/auth/login/' }), (req, res) => {
   res.render('index');
 });
 
