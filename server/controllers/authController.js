@@ -3,35 +3,42 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 exports.login_get = (req, res, next) => {
-  res.render('login');
+  res.render('login', {
+    title: "myblog - Admin Login Page"
+  });
 }
 
 exports.login_post = (req, res, next) => {
-  const mockUser = {
-    username: 'andrewpatasik',
-    password: 'AlphayorK93'
+  // const mockUser = {
+  //   username: 'andrewpatasik',
+  //   password: 'AlphayorK93'
+  // }
+
+  const user = {
+    username: req.body.username,
+    password: req.body.password
   }
 
   User.findOne({
-    username: mockUser.username
+    username: user.username
   }, (err, foundUser) => {
     if (err) {
       return next(err)
     }
 
     if (foundUser) {
-      bcrypt.compare(mockUser.password, foundUser.password)
+      bcrypt.compare(user.password, foundUser.password)
         .then(isMatched => {
           if (isMatched === true) {
-            jwt.sign(mockUser, 'jsonwebtoken', { expiresIn: '30s' },  (err, token) => {
+            jwt.sign(user, 'jsonwebtoken', (err, token) => {
               if (err) {
                 console.log(err);
                 return
               }
-              console.log(req.user)
-              res.send({
-                token
-              })
+              res.cookie('jwt', token, {
+                httpOnly: true,
+                secure: false
+              }).status(200).redirect('/')
             })
           } else {
             res.status(403).send({

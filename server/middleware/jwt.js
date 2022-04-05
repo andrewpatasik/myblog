@@ -3,8 +3,18 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 
 const User = require('../models/User');
 
+let cookieExtractor = (req) => {
+  let token = null;
+
+  if (req && req.cookies) {
+    token = req.cookies['jwt'];
+  }
+
+  return token;
+}
+
 const jwtStrategy = new JwtStrategy({
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  jwtFromRequest: cookieExtractor,
   secretOrKey: 'jsonwebtoken'
 }, (payload, done) => {
   User.findOne({
