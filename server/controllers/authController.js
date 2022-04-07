@@ -4,10 +4,12 @@ const bcrypt = require('bcryptjs');
 
 exports.login_get = (req, res, next) => {
   res.render('login', {
-    title: "myblog - Admin Login Page"
+    title: "myblog - Admin Login Page",
+    user: req.user
   });
 }
 
+// TOKEN IS NOT CLEARED WHEN EXPIRED
 exports.login_post = (req, res, next) => {
   // const mockUser = {
   //   username: 'andrewpatasik',
@@ -30,7 +32,7 @@ exports.login_post = (req, res, next) => {
       bcrypt.compare(user.password, foundUser.password)
         .then(isMatched => {
           if (isMatched === true) {
-            jwt.sign(user, 'jsonwebtoken', (err, token) => {
+            jwt.sign(user, 'jsonwebtoken', { expiresIn: '1h' }, (err, token) => {
               if (err) {
                 console.log(err);
                 return
@@ -52,4 +54,8 @@ exports.login_post = (req, res, next) => {
       })
     }
   })
+}
+
+exports.logout_post = (req, res, next) => {
+  res.clearCookie('jwt').redirect('/auth/login')
 }

@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const passport = require('passport');
+const expressLayouts = require('express-ejs-layouts');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -20,8 +21,9 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 
 // View For Backend //
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(expressLayouts);
+app.set('layout', 'layouts/default.ejs');
 
 // Middleware //
 passport.use(jwtStrategy);
