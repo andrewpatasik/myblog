@@ -1,0 +1,23 @@
+<div class="card w-75 mx-auto mb-3">
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <h5 class="card-title"><%= post.postTitle %></h5>
+      <div>
+        <span>Status:</span>
+        <% if (post.postPublishedStatus) { %>
+          <span class="text-success">Published</span>
+          <% } else { %>
+            <span class="text-danger">Unpublished</span>
+        <% } %>
+          </div>
+    </div>
+    <p class="card-text"><%= post.postContentPreview %></p>
+    <div class="d-flex justify-content-between">
+      <a href="#" class="btn btn-primary">Open Editor</a>
+      <div class="d-flex gap-2">
+        <a href="#" class="btn btn-outline-success">Published</a>
+        <a href="#" class="btn btn-outline-danger">Unpublished</a>
+      </div>
+    </div>
+  </div>
+</div>

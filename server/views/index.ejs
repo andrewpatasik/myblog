@@ -1,32 +1,28 @@
 <%- contentFor('nav') %>
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a id="logo" href="#" class="navbar-brand text-primary">myblog.</a>
-        <ul class="nav">
-          <li class="nav-item">
-            <a href="#" class="nav-link">Create New Post</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <form action="/auth/logout" method="post">
-              <button type="submit" class="nav-link btn btn-link">Logout</button>
-            </form>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a id="logo" href="#" class="navbar-brand text-primary">myblog.</a>
+      <ul class="nav">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Create New Post</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <form action="/auth/logout" method="post">
+            <button type="submit" class="nav-link btn btn-link">Logout</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </nav>
 <%- contentFor('blogContent') %>
   <section class="container">
     <% if (postPayload) { %>
-    <ul>
       <% postPayload.forEach(post => { %>
-      <li><%- post.postTitle %> </li>
+        <%- include('./components/card.ejs', { post }) %> 
       <% }) %>
-    </ul>
     <% } else { %>
 
     <% } %>
