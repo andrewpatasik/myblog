@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const moment = require('moment');
 
 const PostSchema = new Schema({
   postAuthor: {
@@ -26,8 +27,14 @@ const PostSchema = new Schema({
   },
 })
 
-// PostSchema.virtual('url').get(function () {
-//   return `/api/posts/${this._id}`;
-// })
+PostSchema.virtual('apiUrl').get(function () {
+  return `/api/posts/${this._id}`;
+})
+PostSchema.virtual('editorUrl').get(function () {
+  return `/editor/posts/${this._id}`;
+})
+PostSchema.virtual('date').get(function () {
+  return moment(this.postDate).fromNow();
+})
 
 module.exports = mongoose.model('Post', PostSchema);
