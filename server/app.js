@@ -39,6 +39,6 @@ app.use(passport.initialize());
 app.use('/', routes.indexRoute);
 app.use('/auth', routes.authRoute);
 app.use('/api', routes.apiRoute);
-app.use('/editor', routes.editorRoute);
+app.use('/editor', passport.authenticate('jwt', { session: false, failureRedirect: '/auth/login' }), routes.editorRoute);
 
 app.listen(process.env.PORT || 5000, () => console.log('server strarted.'));

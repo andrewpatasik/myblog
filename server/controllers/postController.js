@@ -13,7 +13,9 @@ exports.posts_get = (req, res, next) => {
 
 // PROTECTED ROUTES
 exports.posts_post = (req, res, next) => {
-  res.send({ message: 'NOT IMPLEMENTED'})
+  const payload = Object.assign(req.body);
+  console.log(payload);
+  res.json(payload)
 }
 
 // PROTECTED ROUTES FOR UNPUBLISHED POST

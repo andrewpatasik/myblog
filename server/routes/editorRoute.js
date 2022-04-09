@@ -4,9 +4,8 @@ const passport = require('passport');
 
 const editorController = require('../controllers/editorController');
 
-router.get('/posts/:postId', passport.authenticate('jwt', {
-  session: false,
-  failureRedirect: '/auth/login'
-}), editorController.editor_get);
+router.get('/posts/create', editorController.editor_create_get);
+
+router.get('/posts/:postId', editorController.editor_editpost_get);
 
 module.exports = router;

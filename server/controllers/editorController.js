@@ -1,6 +1,13 @@
 const Post = require('../models/Post');
 
-exports.editor_get = (req, res) => {
+exports.editor_create_get = (req, res) => {
+  res.render('editor', {
+    title: 'myblog - editor',
+    user: req.user,
+  })
+}
+
+exports.editor_editpost_get = (req, res) => {
   const postId = req.params.postId;
 
   Post.findById(
