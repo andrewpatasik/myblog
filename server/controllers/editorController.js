@@ -4,6 +4,7 @@ exports.editor_create_get = (req, res) => {
   res.render('editor', {
     title: 'myblog - editor',
     user: req.user,
+    data: ""
   })
 }
 
@@ -12,13 +13,19 @@ exports.editor_editpost_get = (req, res) => {
 
   Post.findById(
     postId,
-    "postAuthor postTitle postDate postPublishedStatus postContentPreview postContent",
-    (err, post) => {
+    "postTitle postPublishedStatus postContent",
+    (err, foundPost) => {
       if (err) return next(err);
+
+      let { postTitle, postContent } = foundPost;
+
       res.render('editor', {
         title: 'myblog - editor',
         user: req.user,
-        data: post
+        data: {
+          postTitle,
+          postContent: JSON.parse(postContent)
+        } 
       })
     })
 }

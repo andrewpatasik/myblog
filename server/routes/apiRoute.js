@@ -7,7 +7,7 @@ const postController = require('../controllers/postController');
 router.get('/', (req, res) => res.send({ message: '/api'}));
 
 router.get('/posts', passport.authenticate('jwt', { session: false }), postController.posts_get);
-router.post('/posts', postController.posts_post);
+router.post('/posts', passport.authenticate('jwt', { session: false, failureRedirect: '/auth/login'}), postController.posts_post);
 
 router.get('/posts/published', postController.published_get);
 
@@ -18,5 +18,7 @@ router.get('/posts/:postId', postController.post_get);
 router.get('/posts/:postId/comments', postController.comments_get);
 
 router.get('/posts/:postId/comments/:commentId', postController.comment_get);
+
+//edit delete
 
 module.exports = router;

@@ -14,8 +14,21 @@ exports.posts_get = (req, res, next) => {
 // PROTECTED ROUTES
 exports.posts_post = (req, res, next) => {
   const payload = Object.assign(req.body);
-  console.log(payload);
-  res.json(payload)
+  const post = new Post({
+    postAuthor: req.user._id,
+    postTitle: payload.postTitle,
+    postDate: new Date(),
+    postPublishedStatus: payload.postPublishedStatus,
+    postContentPreview: payload.postContentPreview,
+    postContent: JSON.stringify(payload.postContent)
+  }) 
+
+  post.save((err) => {
+    if (err) return next(err);
+
+    res.status(200).json({ 'message': 'post created' })
+  })
+
 }
 
 // PROTECTED ROUTES FOR UNPUBLISHED POST
