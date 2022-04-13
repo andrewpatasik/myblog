@@ -19,14 +19,16 @@ exports.editor_editpost_get = (req, res) => {
     (err, foundPost) => {
       if (err) return next(err);
 
-      let { postTitle, postContent } = foundPost;
+      let { _id, postPublishedStatus, postTitle, postContent } = foundPost;
 
       res.render('editor', {
         title: 'myblog - editor',
         user: req.user,
-        data: {
+        data: { 
+          _id,
+          postPublishedStatus,
           postTitle,
-          postContent: JSON.parse(postContent)
+          postContent: JSON.parse(foundPost.postContent),
         },
         postUrl: `/api/posts/${postId}`,
         postAction: 'PUT'

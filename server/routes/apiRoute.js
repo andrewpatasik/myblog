@@ -17,6 +17,9 @@ router.get('/posts/:postId', postController.post_get);
 
 router.put('/posts/:postId', passport.authenticate('jwt', { session: false, failureRedirect: '/auth/login'}), postController.post_edit);
 
+router.delete('/posts/:postId', passport.authenticate('jwt', { session: false, failureRedirect: '/auth/login'}), postController.post_delete);
+
+
 router.get('/posts/:postId/comments', postController.comments_get);
 
 router.get('/posts/:postId/comments/:commentId', postController.comment_get);
