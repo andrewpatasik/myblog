@@ -1,22 +1,5 @@
 <%- contentFor('nav') %> 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid" style="height: 4rem;">
-      <a id="logo" href="/" class="navbar-brand text-primary">myblog.</a>
-      <ul class="nav">
-        <li class="nav-item">
-          <a href="#" class="nav-link">Create New Post</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <form action="/auth/logout" method="post">
-            <button type="submit" class="nav-link btn btn-link">Logout</button>
-          </form>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <%- include('./components/navbar.ejs') %> 
 <%- contentFor('content') %>
   <div id="title-container" class="form-floating mb-3">
     <input type="text" class="form-control" id="floatingInput" name="title" placeholder="Title">
