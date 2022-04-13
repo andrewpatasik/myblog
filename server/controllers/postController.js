@@ -1,3 +1,5 @@
+const async = require('async');
+
 const Post = require('../models/Post');
 const Comment = require('../models/Comment');
 
@@ -43,6 +45,40 @@ exports.post_get = (req, res, next) => {
       res.send(post)
     })
 };
+
+exports.post_edit = (req, res, next) => {
+  const postId = req.params.postId;
+  const payload = Object.assign(req.body);
+
+  console.log(payload);
+
+  async.waterfall([
+    function(callback) {
+      Post.findById(postId, (err, foundPost) => {
+        if (err) callback(err, null);
+
+        callback(null, foundPost)
+      })
+    },
+    function(foundPostPayload, callback) {
+      foundPostPayload.postTitle = payload.postTitle;
+      foundPostPayload.postContentPreview = payload.postContentPreview;
+      foundPostPayload.postContent = JSON.stringify(payload.postContent);
+      foundPostPayload.postPublishedStatus = payload.postPublishedStatus;
+      foundPostPayload.postDate = new Date(); 
+      
+      foundPostPayload.save((err) => {
+        if (err) callback(err, null);
+
+        callback(null, foundPostPayload)
+      })
+    }
+  ], function (err, result) {
+    if (err) return next(err);
+
+    res.json(result);
+  }) 
+}
 
 exports.comments_get = (req, res, next) => {
   const postId = req.params.postId;

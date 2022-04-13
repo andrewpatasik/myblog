@@ -31,9 +31,10 @@
 
     const postContentToServer = async (payload) => {
 
-      const url = '/api/posts'
+      const postAction = <%- JSON.stringify(postAction) %>;
+      const url = <%- JSON.stringify(postUrl) %>;
       const options = {
-        method: 'POST',
+        method: postAction,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -60,8 +61,8 @@
         postTitle: document.getElementById('floatingInput').value,
         postContentPreview: quill.getText(),
         postContent: quill.getContents(),
+        postPublishedStatus: false
       }
-      formData.postPublishedStatus = false;
 
       postContentToServer(formData)
         .then(data => {
@@ -76,8 +77,8 @@
         postTitle: document.getElementById('floatingInput').value,
         postContentPreview: quill.getText(),
         postContent: quill.getContents(),
+        postPublishedStatus: true
       }   
-      formData.postPublishedStatus = true;
 
       postContentToServer(formData)
         .then(data => {

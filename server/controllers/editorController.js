@@ -4,7 +4,9 @@ exports.editor_create_get = (req, res) => {
   res.render('editor', {
     title: 'myblog - editor',
     user: req.user,
-    data: ""
+    data: "",
+    postUrl: '/api/posts',
+    postAction: 'POST'
   })
 }
 
@@ -25,7 +27,9 @@ exports.editor_editpost_get = (req, res) => {
         data: {
           postTitle,
           postContent: JSON.parse(postContent)
-        } 
+        },
+        postUrl: `/api/posts/${postId}`,
+        postAction: 'PUT'
       })
     })
 }
