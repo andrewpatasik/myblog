@@ -82,7 +82,11 @@ exports.post_edit = (req, res, next) => {
 
 exports.post_delete = (req, res, next) => {
   const postId = req.params.postId;
-  res.json({ message: postId + ' post deleted,' })
+  Post.findByIdAndRemove(postId, (err) => {
+    if (err) return next(err);
+
+    res.json({ message: postId + 'deleted.' });
+  })
 }
 
 exports.comments_get = (req, res, next) => {

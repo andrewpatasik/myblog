@@ -111,11 +111,9 @@
 
     let initDeleteButton = (data) => {
       if (data) {
-        console.log(data)
         const deleteEvent = document.querySelector('#post-delete');
         
         deleteEvent.addEventListener('submit', (e) => {
-          console.log('post delete')
           e.preventDefault();
 
           postContentToServer({}, 'DELETE')
