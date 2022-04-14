@@ -41,8 +41,9 @@
     let populateEditor = (data) => {
       if (data) {
         let {postTitle, postContent} = data
+        
         document.getElementById('floatingInput').value = postTitle
-        quill.setContents(postContent.ops)
+        quill.setContents(JSON.parse(postContent).ops)
       }
       return;
     }
@@ -54,8 +55,10 @@
     const unpublishEvent = document.querySelector('#post-create')
     const publishEvent = document.querySelector('#post-publish')
 
+    const postAction = <%- JSON.stringify(data) %> ? 'PUT' : 'POST';
+    
     const postContentToServer = async (payload, method) => {
-      const url = <%- JSON.stringify(postUrl) %>;
+      const url = <%- JSON.stringify(data.apiUrl) %> || '/api/posts';
       const options = {
         method,
         headers: {
@@ -87,7 +90,7 @@
         postPublishedStatus: false
       }
 
-      postContentToServer(formData, <%- JSON.stringify(postAction) %>)
+      postContentToServer(formData, postAction)
         .then(data => {
           console.log(data)
         }).catch(err => console.log(err))
@@ -103,7 +106,7 @@
         postPublishedStatus: true
       }   
 
-      postContentToServer(formData, <%- JSON.stringify(postAction) %>)
+      postContentToServer(formData, postAction)
         .then(data => {
           console.log(data)
         })

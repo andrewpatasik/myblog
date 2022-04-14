@@ -1,12 +1,11 @@
 const Post = require('../models/Post');
+const { extractValue } = require('../public/static/js/extractValue');
 
 exports.editor_create_get = (req, res) => {
   res.render('editor', {
     title: 'myblog - editor',
     user: req.user,
-    data: "",
-    postUrl: '/api/posts',
-    postAction: 'POST'
+    data: ""
   })
 }
 
@@ -16,22 +15,13 @@ exports.editor_editpost_get = (req, res) => {
   Post.findById(
     postId,
     "postTitle postPublishedStatus postContent",
-    (err, foundPost) => {
+    (err, data) => {
       if (err) return next(err);
-
-      let { _id, postPublishedStatus, postTitle, postContent } = foundPost;
 
       res.render('editor', {
         title: 'myblog - editor',
         user: req.user,
-        data: { 
-          _id,
-          postPublishedStatus,
-          postTitle,
-          postContent: JSON.parse(foundPost.postContent),
-        },
-        postUrl: `/api/posts/${postId}`,
-        postAction: 'PUT'
+        data,
       })
     })
 }
