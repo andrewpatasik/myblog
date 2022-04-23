@@ -1,11 +1,11 @@
 const Post = require('../models/Post');
-const { extractValue } = require('../public/static/js/extractValue');
 
 exports.editor_create_get = (req, res) => {
   res.render('editor', {
     title: 'myblog - editor',
     user: req.user,
-    data: ""
+    data: "",
+    apiUrl: '/api/posts'
   })
 }
 
@@ -22,6 +22,7 @@ exports.editor_editpost_get = (req, res) => {
         title: 'myblog - editor',
         user: req.user,
         data,
+        apiUrl: data.apiUrl
       })
     })
 }

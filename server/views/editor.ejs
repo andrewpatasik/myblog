@@ -58,7 +58,7 @@
     const postAction = <%- JSON.stringify(data) %> ? 'PUT' : 'POST';
     
     const postContentToServer = async (payload, method) => {
-      const url = <%- JSON.stringify(data.apiUrl) %> || '/api/posts';
+      const url = <%- JSON.stringify(apiUrl) %>
       const options = {
         method,
         headers: {
