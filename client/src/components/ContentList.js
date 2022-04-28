@@ -1,28 +1,23 @@
-import React, { useEffect, useState } from "react";
-import myblog from "../api/myblog";
-import Post from "./Post";
+import React, { useState } from "react";
+import Navbar from "./Navbar";
 
-function ContentList() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const response = await myblog.get("/posts/published");
-
-        setPosts(response.data);
-      } catch (error) {
-        throw error;
-      }
-    };
-
-    fetchPost();
-  }, []);
-  return <div className="mt-24 flex flex-col justify-center items-center">
-    { posts.map(post => {
-      return <Post key={post._id} content={post} />
-    })}
-  </div>;
-}
+const ContentList = () => {
+  const [content, setContent] = useState([]);
+  return (
+    <div className="relative flex flex-col w-1/2 bg-white min-h-screen mt-24">
+      <Navbar />
+      {!content.length !== 0 ? (
+        <div className="my-auto text-gray-400 text-center hover:text-white">
+          <i className="fa-solid fa-ghost text-8xl"></i>
+          <h1 className="text-3xl font-bold tracking-thight mt-2">
+            No Post Found.
+          </h1>
+        </div>
+      ) : (
+        <h1>Post</h1>
+      )}
+    </div>
+  );
+};
 
 export default ContentList;

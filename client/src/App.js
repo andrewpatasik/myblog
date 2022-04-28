@@ -1,12 +1,14 @@
 import React from 'react';
 import ContentList from './components/ContentList';
-import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 function App() {
   return ( 
-    <div>
-      <Navbar />
+    <div className='flex flex-col justify-center items-center'>
+      <Header />
       <ContentList />
+      <Footer />
     </div>
       
    );
