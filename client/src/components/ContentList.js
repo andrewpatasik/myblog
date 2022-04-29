@@ -3,7 +3,7 @@ import useFetch from "../hooks/useFetch";
 import Navbar from "./Navbar";
 import Post from "./Post";
 
-const ContentList = () => {
+const ContentList = ({ setPostPath }) => {
   const [data] = useFetch("/posts");
 
   return (
@@ -12,8 +12,8 @@ const ContentList = () => {
       {data.length !== 0 ? (
         data.map(post => {
           return (
-            <div>
-              <Post postData={post} />
+            <div key={post._id}>
+              <Post postData={post} setPostPath={setPostPath} />
               <hr />
             </div>
           )

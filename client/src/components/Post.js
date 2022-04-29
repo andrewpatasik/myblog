@@ -3,7 +3,7 @@ import moment from "moment";
 import PostContent from "./PostContent";
 import Link from "./Link";
 
-const Post = ({ postData }) => {
+const Post = ({ postData, setPostPath }) => {
   return (
     <div className="p-6">
       <div className="flex justify-between">
@@ -23,7 +23,7 @@ const Post = ({ postData }) => {
       <div className="flex justify-between">
         {/* INSERT: Link Component
           */}
-        <Link href={`/posts/${postData._id}`} className={"flex items-center text-sky-500"}>
+        <Link setPostPath={setPostPath} href={`/posts/${postData._id}`} className={"flex items-center text-sky-500"}>
           <span>Read More</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -31,11 +31,11 @@ const Post = ({ postData }) => {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-width="2"
+            strokeWidth="2"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M13 7l5 5m0 0l-5 5m5-5H6"
             />
           </svg>
