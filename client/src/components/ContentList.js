@@ -1,20 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+import useFetch from "../hooks/useFetch";
 import Navbar from "./Navbar";
+import Post from "./Post";
 
 const ContentList = () => {
-  const [content, setContent] = useState([]);
+  const [data] = useFetch("/posts");
+
   return (
-    <div className="relative flex flex-col w-1/2 bg-white min-h-screen mt-24">
+    <div className="relative flex flex-col w-1/2 bg-white min-h-screen mt-24 rounded-md">
       <Navbar />
-      {!content.length !== 0 ? (
-        <div className="my-auto text-gray-400 text-center hover:text-white">
-          <i className="fa-solid fa-ghost text-8xl"></i>
-          <h1 className="text-3xl font-bold tracking-thight mt-2">
-            No Post Found.
-          </h1>
-        </div>
+      {data.length !== 0 ? (
+        data.map(post => {
+          return (
+            <div>
+              <Post postData={post} />
+              <hr />
+            </div>
+          )
+        })
       ) : (
-        <h1>Post</h1>
+        <div className="my-auto text-gray-400 flex flex-col items-center">
+          <h1 className="text-2xl font-bold tracking-thight">No Post Found.</h1>
+        </div>
       )}
     </div>
   );
