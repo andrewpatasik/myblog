@@ -1,14 +1,13 @@
 import React from "react";
 
-const Link = ({ setPostPath, href, className, children }) => {
+const Link = ({ href, className, children, setEndpoint }) => {
   const onLinkClick = e => {
     e.preventDefault();
 
     window.history.pushState({}, '', href);
     const popstate = new PopStateEvent('popstate');
     dispatchEvent(popstate);
-
-    setPostPath(href);
+    setEndpoint(href)
   }
 
   return (

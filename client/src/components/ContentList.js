@@ -1,20 +1,20 @@
 import React from "react";
 import useFetch from "../hooks/useFetch";
 import Navbar from "./Navbar";
-import Post from "./Post";
+import PostCard from "./PostCard";
 
-const ContentList = ({ setPostPath }) => {
+const ContentList = ({ setEndpoint }) => {
   const [data] = useFetch("/posts");
 
   return (
     <div className="relative flex flex-col w-1/2 bg-white min-h-screen mt-24 rounded-md">
       <Navbar />
       {data.length !== 0 ? (
-        data.map(post => {
+        data.map((post, index) => {
           return (
             <div key={post._id}>
-              <Post postData={post} setPostPath={setPostPath} />
-              <hr />
+              <PostCard postData={post} setEndpoint={setEndpoint} />
+              {(data.length - 1) === index ? '' : <hr />} 
             </div>
           )
         })
