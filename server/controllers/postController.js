@@ -100,6 +100,13 @@ exports.comments_get = (req, res, next) => {
   })
 }
 
+exports.comments_post = (req, res, next) => {
+  const postId = req.params.postId;
+  const message = req.body.comment;
+
+  res.status(200).json({ message })
+}
+
 exports.comment_get = (req, res, next) => {
   const postId = req.params.postId;
   const commentId = req.params.commentId;

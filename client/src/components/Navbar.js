@@ -10,7 +10,7 @@ const Navbar = () => {
         <ul className="flex items-center gap-2">
           <li>
             <a
-              href="#"
+              href="/"
               className={
                 activeFilter === 0
                   ? "underline underline-offset-8 decoration-2 text-sky-500"
@@ -23,7 +23,7 @@ const Navbar = () => {
           </li>
           <li>
             <a
-              href="#"
+              href="/"
               className={
                 activeFilter === 1
                   ? "underline underline-offset-8 decoration-2 text-sky-500"
@@ -36,7 +36,7 @@ const Navbar = () => {
           </li>
           <li>
             <a
-              href="#"
+              href="/"
               className={
                 activeFilter === 2
                   ? "underline underline-offset-8 decoration-2 text-sky-500"

@@ -21,6 +21,7 @@ router.delete('/posts/:postId', passport.authenticate('jwt', { session: false, f
 
 
 router.get('/posts/:postId/comments', postController.comments_get);
+router.post('/posts/:postId/comments', postController.comments_post);
 
 // router.get('/posts/:postId/comments/:commentId', postController.comment_get);
 

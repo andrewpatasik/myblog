@@ -3,6 +3,7 @@ import useFetch from "../hooks/useFetch";
 import moment from "moment";
 import Post from "./Post";
 import Comment from "./Comment";
+import CommentList from "./CommentList";
 
 const ContentDetail = () => {
   const [data] = useFetch(window.location.pathname);
@@ -50,7 +51,8 @@ const ContentDetail = () => {
   return (
     <div className="relative flex flex-col w-1/2 p-20 bg-white min-h-screen mt-24 rounded-md">
       {renderedPost()}
-      <Comment />
+      <Comment endpoint={window.location.pathname} />
+      <CommentList />
     </div>
   );
 };
