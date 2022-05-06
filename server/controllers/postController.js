@@ -104,7 +104,17 @@ exports.comments_post = (req, res, next) => {
   const postId = req.params.postId;
   const message = req.body.comment;
 
-  res.status(200).json({ message })
+  const comment = new Comment({
+    commentPostParent: postId,
+    commentContent: JSON.stringify(message),
+  });
+
+  comment.save((err) => {
+    if (err) return next(err);
+
+    res.status(200).json({ message: ` new comment added (id: ${comment._id})`})
+  })
+
 }
 
 exports.comment_get = (req, res, next) => {

@@ -52,7 +52,7 @@ const ContentDetail = () => {
     <div className="relative flex flex-col w-1/2 p-20 bg-white min-h-screen mt-24 rounded-md">
       {renderedPost()}
       <Comment endpoint={window.location.pathname} />
-      <CommentList />
+      <CommentList endpoint={window.location.pathname} />
     </div>
   );
 };

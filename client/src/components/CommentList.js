@@ -1,11 +1,26 @@
-import React from 'react';
+import React from "react";
+import useFetch from "../hooks/useFetch";
+import { parseString } from "../helper/string";
 
-const CommentList = () => {
+const CommentList = ({ endpoint }) => {
+  const [data] = useFetch(`${endpoint}/comments`);
+
   return (
-    <div>
-      <h1>Comment List</h1>
-    </div>
-  )
-}
+    <ul>
+      {data.length !== 0
+        ? data.map((comment) => {
+            return (
+              <li
+                key={comment._id}
+                dangerouslySetInnerHTML={{
+                  __html: parseString(JSON.parse(comment.commentContent)),
+                }}
+              />
+            );
+          })
+        : "No Comment Found."}
+    </ul>
+  );
+};
 
 export default CommentList;

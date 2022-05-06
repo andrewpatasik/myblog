@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import server from "../helper/server";
 import ReactQuill from "react-quill";
-import { sanitizeString } from '../helper/string';
+import { sanitizeString } from "../helper/string";
 import "react-quill/dist/quill.snow.css";
 
 const Comment = ({ endpoint }) => {
