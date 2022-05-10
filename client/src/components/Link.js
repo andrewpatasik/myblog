@@ -1,14 +1,14 @@
 import React from "react";
 
 const Link = ({ href, className, children, setEndpoint }) => {
-  const onLinkClick = e => {
+  const onLinkClick = (e) => {
     e.preventDefault();
 
-    window.history.pushState({}, '', href);
-    const popstate = new PopStateEvent('popstate');
+    window.history.pushState({}, "", href);
+    const popstate = new PopStateEvent("popstate");
     dispatchEvent(popstate);
-    setEndpoint(href)
-  }
+    setEndpoint(href);
+  };
 
   return (
     <a href={href} className={className} onClick={onLinkClick}>

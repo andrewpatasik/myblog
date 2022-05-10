@@ -14,9 +14,9 @@ const ContentList = ({ setEndpoint }) => {
           return (
             <div key={post._id}>
               <PostCard postData={post} setEndpoint={setEndpoint} />
-              {(data.length - 1) === index ? '' : <hr />} 
+              {data.length - 1 === index ? "" : <hr />}
             </div>
-          )
+          );
         })
       ) : (
         <div className="my-auto text-gray-400 flex flex-col items-center">

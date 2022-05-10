@@ -1,16 +1,14 @@
 import React from "react";
-import moment from "moment";
 import PostContent from "./PostContent";
 import Link from "./Link";
+import setPostDateFormat from "../helper/date";
 
 const PostCard = ({ postData, setEndpoint }) => {
   return (
     <div className="p-6">
       <div className="flex justify-between">
         <span className="text-gray-500">
-          {moment().diff(moment(postData.postDate), "hours") >= 24
-            ? moment(postData.postDate).format("MMM Do YY")
-            : moment(postData.postDate).fromNow()}
+          {setPostDateFormat(postData.postDate)}
         </span>
         <span className="bg-gray-700 font-bold py-1 px-2 rounded-md text-white">
           How-To
@@ -21,7 +19,11 @@ const PostCard = ({ postData, setEndpoint }) => {
         content={postData.postContentPreview}
       />
       <div className="flex justify-between">
-        <Link href={`/posts/${postData._id}`} className={"flex items-center text-sky-500"} setEndpoint={setEndpoint}>
+        <Link
+          href={`/posts/${postData._id}`}
+          className={"flex items-center text-sky-500"}
+          setEndpoint={setEndpoint}
+        >
           <span>Read More</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
