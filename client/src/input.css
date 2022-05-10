@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "react-quill/dist/quill.snow.css";
 
 @font-face {
   font-family: 'Noto Serif';
@@ -73,6 +71,7 @@ body {
   color: #0EA5E9;
 }
 
+
 /* Quill */
 #content-box .ql-editor {
   font-size: 1.25rem; /* 20px */
@@ -89,3 +88,7 @@ body {
 .ql-editor {
   min-height: 8rem;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
