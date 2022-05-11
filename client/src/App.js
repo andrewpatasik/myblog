@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="flex flex-col justify-center items-center">
       <Header />
-      <Route path={endpoint === '/' ? endpoint : ''}>
+      <Route path="/">
         <ContentList setEndpoint={setEndpoint} />
       </Route>
       <Route path={endpoint === '/' ? '' : endpoint}>

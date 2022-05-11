@@ -23,8 +23,10 @@ const ContentDetail = () => {
               {setPostDateFormat(post.postDate)}
             </span>
             <div className="flex items-center gap-2">
-              <div className="rounded-full bg-gray-300 w-12 h-12"></div>
-              <span className="tracking-wide">andrew</span>
+              <div>
+                <img src="/static/images/logo.svg" alt="person" className="w-14" />
+              </div>
+              <span className="tracking-wide">andrew patasik</span>
             </div>
           </div>
           <div>

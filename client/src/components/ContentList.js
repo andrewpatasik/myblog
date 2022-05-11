@@ -13,7 +13,7 @@ const ContentList = ({ setEndpoint }) => {
         data.map((post, index) => {
           return (
             <div key={post._id}>
-              <PostCard postData={post} setEndpoint={setEndpoint} />
+              <PostCard post={post} setEndpoint={setEndpoint} />
               {data.length - 1 === index ? "" : <hr />}
             </div>
           );

@@ -3,24 +3,24 @@ import PostContent from "./PostContent";
 import Link from "./Link";
 import setPostDateFormat from "../helper/date";
 
-const PostCard = ({ postData, setEndpoint }) => {
+const PostCard = ({ post, setEndpoint }) => {
   return (
     <div className="p-6">
       <div className="flex justify-between">
         <span className="text-gray-500">
-          {setPostDateFormat(postData.postDate)}
+          {setPostDateFormat(post.postDate)}
         </span>
         <span className="bg-gray-700 font-bold py-1 px-2 rounded-md text-white">
           How-To
         </span>
       </div>
       <PostContent
-        title={postData.postTitle}
-        content={postData.postContentPreview}
+        title={post.postTitle}
+        content={post.postContentPreview}
       />
       <div className="flex justify-between">
         <Link
-          href={`/posts/${postData._id}`}
+          href={`/posts/${post._id}`}
           className={"flex items-center text-sky-500"}
           setEndpoint={setEndpoint}
         >

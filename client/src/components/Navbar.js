@@ -5,7 +5,7 @@ const Navbar = () => {
   const [term, setTerm] = useState("");
 
   return (
-    <nav className="sticky top-14 z-20 w-full text-gray-600">
+    <nav className="sticky top-16 z-20 w-full text-gray-600">
       <div className="absolute -top-12 left-0 w-full flex justify-between">
         <ul className="flex items-center gap-2">
           <li>
