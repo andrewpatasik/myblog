@@ -7,14 +7,13 @@ const Comment = ({ endpoint }) => {
   const [comment, setComment] = useState("");
 
   const onButtonClick = () => {
-    // TO DO: sanitized comment and post it to api: /posts/:postId/comments
-    let sanitizedString = sanitizeString(comment);
+    let commentPayload = sanitizeString(comment);
 
     server
-      .post(`${endpoint}/comments`, { comment: sanitizedString })
+      .post(`${endpoint}/comments`, { comment: commentPayload })
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
+          window.location.reload();
           return res.statusText;
         }
         return res.status;

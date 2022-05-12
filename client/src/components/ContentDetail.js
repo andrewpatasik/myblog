@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useFetch from "../hooks/useFetch";
 import Post from "./Post";
 import Comment from "./Comment";
@@ -7,20 +7,15 @@ import setPostDateFormat from "../helper/date";
 
 const ContentDetail = () => {
   const [data] = useFetch(window.location.pathname);
-  const [post, setPost] = useState({});
-
-  useEffect(() => {
-    setPost(data);
-  }, [data]);
 
   const renderedPost = () => {
-    return Object.keys(post).length !== 0 ? (
+    return Object.keys(data).length !== 0 ? (
       <div>
         <div className="flex text-gray-500 justify-between items-center mb-4">
           <div className="flex gap-3">
             <span className="flex items-center gap-2 text-sm">
               <i className="fa-solid fa-clock text-xl"></i>
-              {setPostDateFormat(post.postDate)}
+              {setPostDateFormat(data.postDate)}
             </span>
             <div className="flex items-center gap-2">
               <div>
@@ -44,7 +39,7 @@ const ContentDetail = () => {
             </ul>
           </div>
         </div>
-        <Post title={post.postTitle} content={post.postContent} />
+        <Post title={data.postTitle} content={data.postContent} />
         <hr />
       </div>
     ) : (
@@ -58,7 +53,6 @@ const ContentDetail = () => {
     <div className="relative flex flex-col w-1/2 p-20 bg-white min-h-screen mt-24 rounded-md">
       {renderedPost()}
       <Comment endpoint={window.location.pathname} />
-      <h2>Comments:</h2>
       <CommentList endpoint={window.location.pathname} />
     </div>
   );
