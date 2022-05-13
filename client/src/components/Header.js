@@ -9,7 +9,7 @@ const Header = () => {
       >
         <span className="text-sky-400">andrew<br/>patasik</span>
       </h1>
-      <a href="/">About Me</a>
+      <a href="/about">About Me</a>
     </div>
   );
 };
