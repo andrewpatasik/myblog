@@ -17,10 +17,8 @@ const ContentDetail = () => {
               <i className="fa-solid fa-clock text-xl"></i>
               {setPostDateFormat(data.postDate)}
             </span>
-            <div className="flex items-center gap-2">
-              <div>
-                <img src="/static/images/logo.svg" alt="person" className="w-14" />
-              </div>
+            <div className="flex items-center gap-1">
+              <img src="/static/images/logo-small.svg" alt="author image" className="w-10 rounded-full" />
               <span className="tracking-wide">andrew patasik</span>
             </div>
           </div>

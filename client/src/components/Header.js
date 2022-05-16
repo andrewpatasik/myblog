@@ -2,13 +2,14 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="w-full sticky top-0 z-10 flex justify-between items-center p-4 bg-white text-gray-500 border-b-2 drop-shadow-sm">
-      <h1
-        className="text-xl tracking-wide leading-5 px-2"
-        style={{ fontFamily: "Contrail One, sans-serif" }}
-      >
-        <span className="text-sky-400">andrew<br/>patasik</span>
-      </h1>
+    <div className="w-full sticky top-0 z-10 flex justify-between items-center px-4 text-gray-500 backdrop-blur-sm">
+      <a href="/">
+        <img
+          src="/static/images/logo-small.svg"
+          alt=""
+          className="w-14 my-4 pt-1 rounded-md border-2 border-black bg-white"
+        />
+      </a>
       <a href="/about">About Me</a>
     </div>
   );
