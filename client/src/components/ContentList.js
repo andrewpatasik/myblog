@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import Navbar from "./Navbar";
 import PostCard from "./PostCard";
 
 const ContentList = ({ setEndpoint }) => {
   const [data] = useFetch("/posts");
+  const [activeFilter, setActiveFilter] = useState(0);
 
   const renderPostCard = () => {
     return data.length !== 0 ? (
@@ -25,7 +26,7 @@ const ContentList = ({ setEndpoint }) => {
 
   return (
     <div className="relative flex flex-col w-1/2 bg-white min-h-screen mt-24 rounded-md">
-      <Navbar />
+      <Navbar activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
       {renderPostCard()}
     </div>
   );
