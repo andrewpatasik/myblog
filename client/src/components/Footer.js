@@ -10,7 +10,7 @@ const Footer = () => {
         <li><a href='/' className='sc-icon'><i className="fa-brands fa-youtube"></i></a></li>
       </ul>
       <div className='p-2'>
-        <p className='font-bold tracking-wide text-gray-400'>hand-made crafted by andrew patasik</p>
+        <p className='font-bold tracking-wide text-gray-400'>hand-crafted by andrew patasik</p>
       </div>
     </footer>
   )

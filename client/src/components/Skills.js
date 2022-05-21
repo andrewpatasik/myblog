@@ -3,18 +3,33 @@ import { skillTemplate } from "../data/skillTemplate";
 
 function Skills() {
   return (
-    <div className="my-12 flex flex-col items-center">
-      <div className="text-center mb-10">
-        <h3 className="text-4xl tracking-wide">SKILLS</h3>
-      </div>
-      <section className="w-1/3 h-96 flex flex-col w-full items-center">
-        <ul className="flex flex-wrap gap-2 items-center justify-center">
+    <section className="flex mb-20 justify-center">
+      <div className="w-1/2 flex items-center justify-center">
+        <div className="w-11/12">
+          <h3 className="text-4xl tracking-wide mb-2">SKILLS</h3>
+          <p className="text-lg text-gray-500">
+            I have background as Software Engineer, I've studied Computer
+            Science at Universitas Esa Unggul Jakarta, where I earned my
+            Bachelor of Computer Science at 2020. I love technology in general
+            but I have a notable interest in Web-based Programming. Thus, my
+            skillset majorly focused on developing and building web-based
+            application. I'm familiar working with these technology:
+          </p>
+        </div>
+        <ul className="flex flex-wrap gap-2 justify-start pl-8">
           {skillTemplate.map((skill, index) => {
-            return <li className="text-2xl tracking-wide font-bold text-white hover:text-gray-300 ease-in-out bg-zinc-800 py-1 px-2 shadow-md" key={index}>{skill}</li>
+            return (
+              <li
+                className="text-lg tracking-wide font-bold text-white hover:text-gray-300 ease-in-out bg-zinc-800 py-1 px-2 rounded-lg shadow-md"
+                key={index}
+              >
+                {skill}
+              </li>
+            );
           })}
         </ul>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
 

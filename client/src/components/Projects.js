@@ -23,10 +23,10 @@ const Projects = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="text-center mb-10">
-        <h3 className="text-4xl tracking-wide">PROJECTS</h3>
-        <p className="text-lg">
-          List of on-going web app projects I'm working on
+      <div className="w-1/2 mb-10">
+        <h3 className="text-4xl tracking-wide mb-2">PROJECTS</h3>
+        <p className="text-lg text-gray-500">
+          List of on-going web app projects I'm working on:
         </p>
       </div>
       <section className="flex flex-col w-full items-center">
