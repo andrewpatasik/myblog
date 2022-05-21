@@ -24,8 +24,8 @@ const Projects = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="text-center mb-10">
-        <h3 className="text-5xl">PROJECTS</h3>
-        <p className="text-xl">
+        <h3 className="text-4xl tracking-wide">PROJECTS</h3>
+        <p className="text-lg">
           List of on-going web app projects I'm working on
         </p>
       </div>
