@@ -30,11 +30,11 @@ const ProjectCard = ({ title, image, stack, description }) => {
         </div>
         <div className="flex flex-1 items-center justify-center gap-2 text-indigo-500 text-lg">
           <a href="#" className="flex items-center p-1 gap-1">
-            <i class="fa-solid fa-eye"></i>
+            <i className="fa-solid fa-eye"></i>
             <span className="font-bold tracking-wide">Demo</span>
           </a>
           <a href="#" className="flex items-center gap-2 p-1">
-            <i class="fa-solid fa-code"></i>
+            <i className="fa-solid fa-code"></i>
             <span className="font-bold tracking-wide">Code</span>
           </a>
         </div>
