@@ -5,6 +5,7 @@ export const skillTemplate = [
   "Node JS",
   "Express",
   "Mongo DB",
+  "Mongoose",
   "Firebase",
   "HTML",
   "CSS",
