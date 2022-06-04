@@ -11,9 +11,11 @@ const useFetch = (endpoint) => {
         if (res.status === 200) {
           console.log(res.status + " " + res.statusText);
           setData(res.data);
-          return;
         }
-        return res.statusText;
+        if (res.status === 204) {
+          console.log(res.statusText)
+          setData(res.statusText)
+        }
       })
       .catch((err) => {
         console.log(err);

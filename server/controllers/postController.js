@@ -9,6 +9,10 @@ exports.posts_get = (req, res, next) => {
     "postAuthor postTitle postDate postPublishedStatus postContentPreview postContent",
     (err, allPosts) => {
       if (err) return next(err);
+      if (allPosts.length < 1) {
+        res.status(204).send()
+        return
+      }
       res.send(allPosts)
     })
 }
@@ -137,6 +141,12 @@ exports.published_get = (req, res, next) => {
     "postAuthor postTitle postDate postPublishedStatus postContentPreview postContent",
     (err, allPosts) => {
       if (err) return next(err);
+
+      if (allPosts.length < 1) {
+        res.status(204).send()
+        return
+      }
+
       res.send(allPosts)
     })
 }

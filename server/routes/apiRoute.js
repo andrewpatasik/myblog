@@ -4,7 +4,7 @@ const router = express.Router();
 
 const postController = require('../controllers/postController');
 
-router.get('/', (req, res) => res.send({ message: '/api'}));
+router.get('/', (req, res) => res.status(200).json({ message: '/api'}));
 
 router.get('/posts', postController.posts_get);
 router.post('/posts', passport.authenticate('jwt', { session: false, failureRedirect: '/auth/login'}), postController.posts_post);
