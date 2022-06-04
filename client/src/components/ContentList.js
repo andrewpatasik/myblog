@@ -3,7 +3,7 @@ import useFetch from "../hooks/useFetch";
 import Navbar from "./Navbar";
 import PostCard from "./PostCard";
 
-const ContentList = ({ setEndpoint }) => {
+const ContentList = () => {
   const [data] = useFetch("/posts");
   const [activeFilter, setActiveFilter] = useState(0);
 
@@ -12,7 +12,7 @@ const ContentList = ({ setEndpoint }) => {
       data.map((post, index) => {
         return (
           <div key={post._id}>
-            <PostCard post={post} setEndpoint={setEndpoint} />
+            <PostCard post={post} />
             {data.length - 1 === index ? "" : <hr />}
           </div>
         );

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
+
 import About from "./components/About";
 import ContentDetail from "./components/ContentDetail";
 import ContentList from "./components/ContentList";
@@ -6,19 +8,19 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Route from "./components/Route";
 
-function App() {
-  const [endpoint, setEndpoint] = useState(window.location.pathname);
+function App(props) {
+  const { currentEndpoint } = props;
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <Header setEndpoint={setEndpoint} />
+      <Header/>
       <Route path="/">
-        <ContentList setEndpoint={setEndpoint} />
+        <ContentList />
       </Route>
       <Route path="/about">
         <About />
       </Route>
-      <Route path={endpoint.split('/').length > 2 ? endpoint : ''}>
+      <Route path={currentEndpoint.split("/").length > 2 ? currentEndpoint : ""}>
         <ContentDetail />
       </Route>
       <Footer />
@@ -26,4 +28,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    currentEndpoint: state.currentEndpoint,
+  };
+};
+
+export default connect(mapStateToProps)(App);

@@ -8,7 +8,6 @@ const Filter = ({ label, activeFilter, setActiveFilter }) => {
       return (
         <li key={index}>
           <button
-            href="#"
             className={
               activeFilter === index 
                 ? "underline underline-offset-8 decoration-2 text-sky-500"

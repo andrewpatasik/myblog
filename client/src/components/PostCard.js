@@ -3,7 +3,7 @@ import PostContent from "./PostContent";
 import Link from "./Link";
 import setPostDateFormat from "../helper/date";
 
-const PostCard = ({ post, setEndpoint }) => {
+const PostCard = ({ post }) => {
   return (
     <div className="p-6">
       <div className="flex justify-between">
@@ -22,7 +22,6 @@ const PostCard = ({ post, setEndpoint }) => {
         <Link
           href={`/posts/${post._id}`}
           className={"flex items-center text-sky-500"}
-          setEndpoint={setEndpoint}
         >
           <span>Read More</span>
           <svg

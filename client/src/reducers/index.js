@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import postsReducer from './postsReducer';
+import endpointReducer from './endpointReducer';
 
 export default combineReducers({
-  allPosts: postsReducer,
+  currentEndpoint: endpointReducer
 })

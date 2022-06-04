@@ -1,13 +1,16 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const Link = ({ href, className, children, setEndpoint }) => {
+import currentEndpoint from "../actions/currentEndpoint";
+
+const Link = ({ href, className, children, currentEndpoint }) => {
   const onLinkClick = (e) => {
     e.preventDefault();
 
     window.history.pushState({}, "", href);
     const popstate = new PopStateEvent("popstate");
     dispatchEvent(popstate);
-    setEndpoint(href);
+    currentEndpoint(href);
   };
 
   return (
@@ -17,4 +20,4 @@ const Link = ({ href, className, children, setEndpoint }) => {
   );
 };
 
-export default Link;
+export default connect(null, { currentEndpoint })(Link);
