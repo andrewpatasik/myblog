@@ -8,13 +8,15 @@ const useFetch = (endpoint) => {
     server
       .get(endpoint)
       .then((res) => {
-        if (res.status === 200) {
-          console.log(res.status + " " + res.statusText);
-          setData(res.data);
-        }
-        if (res.status === 204) {
-          console.log(res.statusText)
-          setData(res.statusText)
+        switch (res.status) {
+          case 200:
+            setData(res.data);
+            break;
+          case 204:
+            setData(res.statusText)
+            break;
+          default:
+            throw res.statusText
         }
       })
       .catch((err) => {

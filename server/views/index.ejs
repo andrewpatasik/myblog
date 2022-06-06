@@ -1,10 +1,14 @@
 <%- contentFor('nav') %> 
   <%- include('./components/navbar.ejs') %> 
 <%- contentFor('content') %>
-  <% if (postPayload) { %>
-    <% postPayload.forEach(post => { %>
-      <%- include('./components/card.ejs', { post }) %> 
-    <% }) %>
-  <% } else { %>
-    <!-- display no content found -->
-  <% } %>
+  <div class="flex-fill d-flex flex-column">
+    <% if (postPayload.length >= 1) { %>
+      <% postPayload.forEach(post => { %>
+        <%- include('./components/card.ejs', { post }) %> 
+      <% }) %>
+    <% } else { %>
+      <div class="d-flex flex-fill justify-content-center align-items-center">
+        <h1 class="display-5">No Content Found</h1>
+      </div>
+    <% } %>
+  </div>

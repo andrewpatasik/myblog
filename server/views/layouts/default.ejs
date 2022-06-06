@@ -19,14 +19,14 @@
 </head>
 
 <body>
-  <% if (!user) { %>
+  <div class="container-fluid min-vh-100 d-flex flex-column">
+    <% if (!user) { %>
       <%- loginView %> 
-    <% } else { %>
-      <%- nav %>
-      <section class="container mt-4">
-        <%- content %> 
-      </section>
-      <% } %>
+     <% } else { %>
+      <%- nav %> 
+      <%- content %> 
+    <% } %>
+  </div>
 </body>
 
 </html>

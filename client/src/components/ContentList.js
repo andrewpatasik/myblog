@@ -28,6 +28,8 @@ const ContentList = () => {
         );
       });
     }
+
+    // Initial Loading
     return (
       <div className="my-auto text-gray-400 flex flex-col items-center">
         <h1 className="text-2xl font-bold tracking-thight">
